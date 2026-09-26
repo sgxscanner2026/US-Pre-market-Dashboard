@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>US Pre-Market Desk</title>
+<style>
+  :root{
+    --bg:#0e1116; --panel:#161b22; --line:#242b36;
+    --text:#e6e9ef; --dim:#8b93a1; --up:#3fb27f; --down:#e2584d; --accent:#4f8cff;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  html,body{height:100%;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Georgia', 'Times New Roman', serif;
+    font-size:15px; line-height:1.5;
+  }
+  .mono{font-family:'Courier New', monospace;}
+  header{
+    padding:18px 22px; border-bottom:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:baseline;
+    top:env(safe-area-inset-top,0px);
+  }
+  header h1{font-size:20px; margin:0; font-weight:normal; letter-spacing:0.3px;}
+  header .time{color:var(--dim); font-size:13px;}
+  .grid{
+    display:grid; gap:1px; background:var(--line);
+    grid-template-columns:1.3fr 1fr 1fr;
+  }
+  @media (max-width:800px){ .grid{grid-template-columns:1fr;} }
+  .panel{background:var(--panel); padding:18px 20px;}
+  .panel h2{
+    font-size:12px; text-transform:uppercase; letter-spacing:1.2px;
+    color:var(--dim); margin:0 0 14px 0; font-weight:normal; font-family:Arial, sans-serif;
+  }
+  .futures-row{display:flex; justify-content:space-between; align-items:baseline; padding:9px 0; border-bottom:1px solid var(--line); gap:10px;}
+  .futures-row:last-child{border-bottom:none;}
+  .futures-row .name{color:var(--text); flex:1;}
+  .futures-row .price{text-align:right; min-width:74px;}
+  .futures-row .chg{text-align:right; min-width:100px; font-size:13px;}
+  .chg-up{color:var(--up);}
+  .chg-down{color:var(--down);}
+  .news-item{padding:11px 0; border-bottom:1px solid var(--line);}
+  .news-item:last-child{border-bottom:none;}
+  .news-item .headline{color:var(--text); font-size:14.5px;}
+  .news-item .meta{color:var(--dim); font-size:11.5px; margin-top:4px; font-family:Arial, sans-serif;}
+  .news-item .meta a{color:var(--accent); text-decoration:none;}
+  .news-item .meta a:hover{text-decoration:underline;}
+  .mover-row{display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--line);}
+  .mover-row:last-child{border-bottom:none;}
+  .ticker{font-family:'Courier New', monospace; font-size:14px; color:var(--text);}
+  .badge{
+    display:inline-block; font-size:10px; padding:2px 6px; border-radius:2px;
+    font-family:Arial, sans-serif; letter-spacing:0.4px; margin-right:8px;
+  }
+  .badge.earn{background:rgba(79,140,255,.15); color:var(--accent);}
+  .badge.up{background:rgba(63,178,127,.15); color:var(--up);}
+  .badge.down{background:rgba(226,88,77,.15); color:var(--down);}
+  footer{padding:14px 22px; color:var(--dim); font-size:11.5px; font-family:Arial, sans-serif; border-top:1px solid var(--line);}
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]){
+      --bg:#faf9f6; --panel:#ffffff; --line:#e4e1d8; --text:#1c1c1c; --dim:#7a7568;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>US Pre-Market Desk</h1>
+  <span class="time mono">Sat Sep 26 · Live data via Alpha Vantage</span>
+</header>
+
+<div class="grid">
+
+  <div class="panel">
+    <h2>Catalyst Feed</h2>
+    <div class="news-item">
+      <div><span class="badge earn">EARNINGS</span><span class="headline">CarMax heads into Q2 print with soft retail demand and margin pressure in focus</span></div>
+      <div class="meta">TradingKey · 9:02 AM ET · <a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262184809-carmax-stock-forecast-kmx-q2-earnings-used-car-demand-tradingkey" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+    <div class="news-item">
+      <div><span class="headline">AMD tops $1 trillion market cap on renewed AI chip demand</span></div>
+      <div class="meta">Benzinga · 7:52 AM ET · <a href="https://www.benzinga.com/markets/equities/26/09/62007539/amd-1-trillion-meta-muse-week-in-review" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+    <div class="news-item">
+      <div><span class="headline">Best Buy expands ad business via deeper Amazon Fire TV tie-up</span></div>
+      <div class="meta">MarketBeat · 8:11 AM ET · <a href="https://www.marketbeat.com/articles/best-buy-is-turning-amazon-fire-tv-into-a-new-advertising-opportunity/" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+    <div class="news-item">
+      <div><span class="badge up">UPGRADE</span><span class="headline">Johnson Controls raised to Strong-Buy at Wells Fargo after beat</span></div>
+      <div class="meta">MarketBeat · 6:38 AM ET · <a href="https://www.marketbeat.com/instant-alerts/analyst-johnson-controls-international-nyse-jci-raised-to-strong-buy-at-wells-fargo-company-2026-09-26/" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+    <div class="news-item">
+      <div><span class="badge down">DOWNGRADE</span><span class="headline">Otis Worldwide cut to Strong Sell at Wells Fargo, near 52-week low</span></div>
+      <div class="meta">MarketBeat · 6:36 AM ET · <a href="https://www.marketbeat.com/instant-alerts/analyst-otis-worldwide-nyse-otis-upgraded-to-strong-sell-at-wells-fargo-company-2026-09-26/" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+    <div class="news-item">
+      <div><span class="badge up">UPGRADE</span><span class="headline">Emerson Electric raised to Strong-Buy at Wells Fargo, trading near 52-week high</span></div>
+      <div class="meta">MarketBeat · 6:34 AM ET · <a href="https://www.marketbeat.com/instant-alerts/analyst-emerson-electric-nyse-emr-upgraded-at-wells-fargo-company-2026-09-26/" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+    <div class="news-item">
+      <div><span class="badge up">UPGRADE</span><span class="headline">Welltower raised to Strong-Buy at Jefferies on demographics tailwind</span></div>
+      <div class="meta">MarketBeat · 6:38 AM ET · <a href="https://www.marketbeat.com/instant-alerts/analyst-welltower-nyse-well-raised-to-strong-buy-at-jefferies-financial-group-2026-09-26/" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+    <div class="news-item">
+      <div><span class="headline">Sumitomo Mitsui Financial Group jumps 4.3% on VPBank stake talks and bond-yield tailwind</span></div>
+      <div class="meta">AD HOC NEWS · 5:53 AM ET · <a href="https://www.ad-hoc-news.de/boerse/news/corporate-news/sumitomo-mitsui-financial-group-stock-gains-4-29-percent-on-september-25/70186030" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+    <div class="news-item">
+      <div><span class="headline">Morgan Stanley becomes first major bank to back a prediction-market venture</span></div>
+      <div class="meta">Yahoo Finance · 6:12 AM ET · <a href="https://sg.finance.yahoo.com/news/morgan-stanley-ms-joins-prediction-100851041.html" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+    <div class="news-item">
+      <div><span class="headline">Larry Ellison pledges further $9.2B in Oracle shares as loan collateral</span></div>
+      <div class="meta">Investing.com · 5:41 AM ET · <a href="https://www.investing.com/news/company-news/larry-ellison-adds-92-billion-in-oracle-shares-as-loan-collateral-4918330" target="_blank" rel="noopener">Read more</a></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Futures &amp; Rates</h2>
+    <div class="futures-row"><span class="name">10Y Yield</span><span class="price mono">5.18%</span><span class="chg mono">daily close</span></div>
+    <div class="futures-row"><span class="name">WTI Crude</span><span class="price mono">96.41</span><span class="chg mono chg-down">-0.56 · -0.58%</span></div>
+    <div class="futures-row"><span class="name">Gold</span><span class="price mono">4,284.99</span><span class="chg mono chg-up">+17.96 · +0.42%</span></div>
+    <div class="futures-row"><span class="name">Bitcoin</span><span class="price mono">83,919.94</span><span class="chg mono chg-down">-173.19 · -0.21%</span></div>
+  </div>
+
+  <div class="panel">
+    <h2>Watchlist (last close)</h2>
+    <div class="mover-row"><span class="ticker">AAPL</span><span class="mono"><span class="chg-up">+1.53%</span> · 341.07 (+5.15)</span></div>
+    <div class="mover-row"><span class="ticker">JPM</span><span class="mono"><span class="chg-up">+1.33%</span> · 343.06 (+4.50)</span></div>
+    <div class="mover-row"><span class="ticker">AMD</span><span class="mono"><span class="chg-up">+0.22%</span> · 630.63 (+1.37)</span></div>
+    <div class="mover-row"><span class="ticker">MU</span><span class="mono"><span class="chg-up">+0.16%</span> · 1082.28 (+1.75)</span></div>
+    <div class="mover-row"><span class="ticker">NVDA</span><span class="mono"><span class="chg-up">+0.22%</span> · 225.07 (+0.49)</span></div>
+    <div class="mover-row"><span class="ticker">SOFI</span><span class="mono"><span class="chg-down">-1.31%</span> · 16.58 (-0.22)</span></div>
+    <div class="mover-row"><span class="ticker">PLTR</span><span class="mono"><span class="chg-down">-1.52%</span> · 189.67 (-2.92)</span></div>
+    <div class="mover-row"><span class="ticker">TSLA</span><span class="mono"><span class="chg-down">-1.54%</span> · 372.11 (-5.83)</span></div>
+    <div class="mover-row"><span class="ticker">META</span><span class="mono"><span class="chg-down">-3.33%</span> · 751.66 (-25.93)</span></div>
+  </div>
+
+</div>
+
+<footer>All data live from Alpha Vantage (Watchlist and last-close figures reflect the prior regular session — true intraday pre-market ticks need a paid plan).</footer>
+</body>
+</html>
